@@ -11,13 +11,15 @@ import {
 export default class Result extends Component {
 	render() {
 		return(
-			<View style={styles.container}>
-				<Image
-					source={{uri: this.props.recipe.image}}
-					style={styles.image}
-				/>
-				<Text style={styles.textBox}>{this.props.recipe.title}</Text>
-			</View>
+			<TouchableHighlight onPress={this.props.onPress}>
+				<View style={styles.container}>
+					<Image
+						source={{uri: this.props.recipe.image}}
+						style={styles.image}
+					/>
+					<Text style={styles.textBox}>{this.props.recipe.title}</Text>
+				</View>
+			</TouchableHighlight>
 		)
 	}
 }

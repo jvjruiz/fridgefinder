@@ -1,10 +1,10 @@
 import * as actions from './actions'
 
 const initialState ={
-	searchString: "",
+	searchString: '',
 	currentResults: [],
-	currentResultId:"",
-	loading: false
+	currentRecipe:'',
+	loading: false,
 }
 
 export default function Reducer(state = initialState, action = {}) {
@@ -19,6 +19,10 @@ export default function Reducer(state = initialState, action = {}) {
 				currentResults: action.payload
 			});
 
+		case actions.FETCH_CURRENT_RECIPE_SUCCESS:
+			return Object.assign({}, state, {
+				currentRecipe: action.payload
+			})
 		default:
 			return state;
 	}

@@ -14,6 +14,7 @@ import store from './js/redux/store';
 import * as actions from './js/redux/actions'
 import searchPage from './js/components/searchpage'
 
+
 export default class fridgeFinder extends Component {
   render() {
     return (

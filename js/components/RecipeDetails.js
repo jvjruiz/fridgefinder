@@ -3,6 +3,8 @@ import {
 	Text,
 	View,
 	StyleSheet,
+	ScrollView,
+	Linking
 } from 'react-native';
 import * as actions from '../redux/actions';
 import {connect} from 'react-redux';
@@ -12,20 +14,38 @@ import IngredientList from './IngredientList';
 
 class RecipeDetails extends Component {
 	render() {
-		return (
-			<View style={styles.container}>
-				<Text style={styles.headerText}>
-					Ingredients
-				</Text>
-				<IngredientList />
-				<Text style={styles.headerText}>
-					Instructions
-				</Text>
-				<Text style={styles.normalText}>
-					{this.props.currentRecipe.instructions ? this.props.currentRecipe.instructions : 'No Instructions available'}
-				</Text>
-			</View>
-		)
+		if(this.props.currentRecipe.instructions) {
+			return (
+				<ScrollView styles={styles.scroll}>	
+					<Text style={styles.headerText}>
+						Ingredients
+					</Text>
+					<IngredientList />
+					<Text style={styles.headerText}>
+						Instructions
+					</Text>
+					<Text style={styles.normalText}>
+						{this.props.currentRecipe.instructions}
+					</Text>
+				</ScrollView>
+			)
+		}
+		else {
+			return ( 
+				<ScrollView>	
+					<Text style={styles.headerText}>
+						Ingredients
+					</Text>
+					<IngredientList />
+					<Text style={styles.headerText}>
+						Instructions
+					</Text>
+					<Text style={styles.link} onPress={() => Linking.openURL(this.props.currentRecipe.sourceUrl)}>
+						Read Detailed Instructions on {this.props.currentRecipe.creditText}
+					</Text>
+				</ScrollView>
+			)
+		}	
 	}
 }
 
@@ -38,15 +58,19 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(RecipeDetails);
 
 const styles = StyleSheet.create({
-	container: {
-		flex:1,
-	},
 	headerText: {
 		fontWeight: 'bold',
 		paddingLeft: 25,
 		paddingVertical: 10
 	},
 	normalText: {
+		paddingHorizontal:25,
+	},
+	scroll: {
+		paddingTop: -25
+	},
+	link: {
+		color:'blue',
 		paddingHorizontal:25,
 	}
 })

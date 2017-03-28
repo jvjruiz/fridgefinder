@@ -3,7 +3,8 @@ import {
 	Text,
 	View,
 	StyleSheet,
-	Image
+	Image,
+	ScrollView
 } from 'react-native';
 import * as actions from '../redux/actions';
 import {connect} from 'react-redux';
@@ -32,11 +33,12 @@ export default connect(mapStateToProps)(RecipeDisplay);
 
 const styles = StyleSheet.create({
 	container: {
+		alignSelf: 'stretch',
 		flex:1,
 	},
 
 	image: {
 		justifyContent: 'center',
-		flex:1
+		flex:2
 	}
 })

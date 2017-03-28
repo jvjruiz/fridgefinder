@@ -17,7 +17,10 @@ export default class Result extends Component {
 						source={{uri: this.props.recipe.image}}
 						style={styles.image}
 					/>
-					<Text style={styles.textBox}>{this.props.recipe.title}</Text>
+					<View style={styles.textBox}>	
+						<Text style={styles.header}>{this.props.recipe.title}</Text>
+						<Text>Likes: {this.props.recipe.likes} Matching Ingredients: {this.props.recipe.usedIngredientCount}</Text>
+					</View>
 				</View>
 			</TouchableHighlight>
 		)
@@ -26,21 +29,28 @@ export default class Result extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		paddingLeft: 20,
-		paddingRight: 20,
+		paddingHorizontal: 10,
+		paddingRight: 1,
 		flexDirection: 'row',
-		marginBottom: 10,
+		height:70,
+		justifyContent: 'center',
+		borderColor: '#48BBEC',
+		borderWidth: .5,
+	},
+	header: {
+		fontWeight:'bold',
+		paddingBottom: 5
 	},
 	textBox: {
 		flex: 1,
-		height: 36,
-		borderColor: '#48BBEC',
-		borderWidth: 1,
-		textAlign: 'center',
+		height: 50,
 		marginRight: 10,
+		marginVertical: 15,
+		paddingLeft: 10
 	},
 	image: {
-		height:36,
-		width:64
+		marginTop:7.5,
+		height:54,
+		width:96
 	}
 })

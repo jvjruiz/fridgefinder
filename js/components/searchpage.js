@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   Button,
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -23,22 +24,22 @@ class searchPage extends Component {
   	}
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.instructions}>
-          To get started, search the ingredients you already have
-        </Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Separate ingredients with commas e.g. Salt, Pepper, Steak"
-          onChangeText = {(text) => this.props.dispatch(actions.updateSearchString(text))}
-          onSubmitEditing = {() => this.onSubmit(nextRoute)}
-        />
-        <Button
-          onPress={() => this.onSubmit(nextRoute)}
-          style={styles.button}
-          title="Search for recipes">
-        </Button>
-      </View>
+        <Image souce={{uri: "http://www.samsung.com/us/kitchensuite/images/refrigerator-lower-open.jpg"}} style={styles.container}>
+          <Text style={styles.instructions}>
+            To get started, search the ingredients you already have
+          </Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Separate ingredients with commas e.g. salt, pepper, steak"
+            onChangeText = {(text) => this.props.dispatch(actions.updateSearchString(text))}
+            onSubmitEditing = {() => this.onSubmit(nextRoute)}
+          />
+          <Button
+            onPress={() => this.onSubmit(nextRoute)}
+            style={styles.button}
+            title="Search for recipes">
+          </Button>
+        </Image>
     );
   }
 }
@@ -53,10 +54,13 @@ export default connect(mapStateToProps)(searchPage);
 
 const styles = StyleSheet.create({
   container: {
+    width: undefined,
+    height: undefined,
+    resizeMode:'cover',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'transparent',
   },
   welcome: {
     fontSize: 20,

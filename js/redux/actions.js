@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-fetch';
-
 export const UPDATE_SEARCH_STRING = 'UPDATE_SEARCH_STRING';
 export function updateSearchString(string) {
 	return {

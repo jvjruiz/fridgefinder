@@ -6,6 +6,14 @@ export function updateSearchString(string) {
 	}
 }
 
+export const ADD_TO_GROCERY_LIST = 'ADD_TO_GROCERY_LIST';
+export function addToGroceryList(array) {
+	return {
+		type: ADD_TO_GROCERY_LIST,
+		payload: array
+	}
+}
+
 //to do sync actions for handling recipe data
 export const SEARCH_RECIPES = 'SEARCH_RECIPES';
 export function searchRecipes(keywords) {

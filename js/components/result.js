@@ -19,7 +19,7 @@ export default class Result extends Component {
 					/>
 					<View style={styles.textBox}>	
 						<Text style={styles.header}>{this.props.recipe.title}</Text>
-						<Text>Likes: {this.props.recipe.likes} Matching Ingredients: {this.props.recipe.usedIngredientCount}</Text>
+						<Text style={styles.details}>Likes: {this.props.recipe.likes} Matching Ingredients: {this.props.recipe.usedIngredientCount}</Text>
 					</View>
 				</View>
 			</TouchableHighlight>
@@ -39,7 +39,11 @@ const styles = StyleSheet.create({
 	},
 	header: {
 		fontWeight:'bold',
-		paddingBottom: 5
+		paddingBottom: 5,
+		fontSize:10,
+	},
+	details: {
+		fontSize:11
 	},
 	textBox: {
 		flex: 1,

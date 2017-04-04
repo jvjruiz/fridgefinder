@@ -9,44 +9,29 @@ import {
 import * as actions from '../redux/actions';
 import {connect} from 'react-redux';
 
+import RecipeButton from './RecipeButton';
+
 import IngredientList from './IngredientList';
 
 
 class RecipeDetails extends Component {
 	render() {
-		if(this.props.currentRecipe.instructions) {
-			return (
-				<ScrollView styles={styles.scroll}>	
-					<Text style={styles.headerText}>
-						Ingredients
-					</Text>
-					<IngredientList />
-					<Text style={styles.headerText}>
-						Instructions
-					</Text>
-					<Text style={styles.normalText}>
-						{this.props.currentRecipe.instructions}
-					</Text>
-				</ScrollView>
-			)
-		}
-		else {
-			return ( 
-				<ScrollView>	
-					<Text style={styles.headerText}>
-						Ingredients
-					</Text>
-					<IngredientList />
-					<Text style={styles.headerText}>
-						Instructions
-					</Text>
-					<Text style={styles.link} onPress={() => Linking.openURL(this.props.currentRecipe.sourceUrl)}>
-						Read Detailed Instructions on {this.props.currentRecipe.creditText}
-					</Text>
-				</ScrollView>
-			)
-		}	
-	}
+		return ( 
+			<ScrollView style={styles.scroll}>	
+				<Text style={styles.headerText}>
+					Ingredients
+				</Text>
+				<IngredientList />
+				<RecipeButton />
+				<Text style={styles.headerText}>
+					Instructions
+				</Text>
+				<Text style={styles.link} onPress={() => Linking.openURL(this.props.currentRecipe.sourceUrl)}>
+					Read Detailed Instructions on {this.props.currentRecipe.creditText}
+				</Text>
+			</ScrollView>
+		)
+	}	
 }
 
 const mapStateToProps = (state) => {
@@ -67,7 +52,8 @@ const styles = StyleSheet.create({
 		paddingHorizontal:25,
 	},
 	scroll: {
-		paddingTop: -25
+		flex:2,
+		paddingTop: -20
 	},
 	link: {
 		color:'blue',

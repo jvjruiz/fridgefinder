@@ -14,18 +14,14 @@ import {connect} from 'react-redux';
 
 class resultsPage extends Component {
 	onSubmit(nextRoute) {
-		console.log(this.props.searchString)
 	    this.props.dispatch(actions.searchRecipes(this.props.searchString))
 	 }
 
 	onPress(recipe, event) {
+		console.log(recipe)
+		const {navigate} = this.props.navigation;
 		this.props.dispatch(actions.fetchCurrentRecipe(recipe.id))
-		console.log(this.props.currentResults)
-		const nextRoute = {
-			component: RecipeDisplay,
-			title: recipe.title
-		}
-		this.props.navigator.push(nextRoute)
+		navigate('RecipeDisplay',{recipe:recipe.title})
 	}
 
 	render() {

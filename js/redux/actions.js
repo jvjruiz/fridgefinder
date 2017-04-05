@@ -14,6 +14,13 @@ export function addToGroceryList(array) {
 	}
 }
 
+export const CLEAR_GROCERY_LIST = 'CLEAR_GROCERY_LIST';
+export function clearGroceryList() {
+	return {
+		type: CLEAR_GROCERY_LIST,
+	}
+}
+
 //to do sync actions for handling recipe data
 export const SEARCH_RECIPES = 'SEARCH_RECIPES';
 export function searchRecipes(keywords) {

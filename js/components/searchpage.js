@@ -12,30 +12,30 @@ import {connect} from 'react-redux';
 import * as actions from '../redux/actions';
 
 class searchPage extends Component {
-  onSubmit(nextRoute) {
+
+  onSubmit() {
+    const {navigate} = this.props.navigation;
+    console.log(this.props.navigation)
     this.props.dispatch(actions.searchRecipes(this.props.searchString))
-    this.props.navigator.push(nextRoute);
+    console.log(this.props.searchString)
+    console.log(navigate('ResultsPage'))
   }
 
   render() {
-  	const nextRoute = {
-  		component:resultsPage,
-  		title: 'Results'
-  	}
 
     return (
         <Image souce={{uri: "http://www.samsung.com/us/kitchensuite/images/refrigerator-lower-open.jpg"}} style={styles.container}>
           <Text style={styles.instructions}>
-            To get started, search the ingredients you already have
+            Search with your current ingredients
           </Text>
           <TextInput
             style={styles.input}
-            placeholder="Separate ingredients with commas e.g. salt, pepper, steak"
+            placeholder="Separate with commas e.g. salt, pepper, steak"
             onChangeText = {(text) => this.props.dispatch(actions.updateSearchString(text))}
-            onSubmitEditing = {() => this.onSubmit(nextRoute)}
+            onSubmitEditing = {() => this.onSubmit()}
           />
           <Button
-            onPress={() => this.onSubmit(nextRoute)}
+            onPress={() => this.onSubmit()}
             style={styles.button}
             title="Search for recipes">
           </Button>

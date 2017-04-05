@@ -26,9 +26,13 @@ export default function Reducer(state = initialState, action = {}) {
 			})
 
 		case actions.ADD_TO_GROCERY_LIST:
-			console.log(state)
 			return Object.assign({}, state, {
 				currentGroceryList: state.currentGroceryList.concat(action.payload)
+			})
+
+		case actions.CLEAR_GROCERY_LIST: 
+			return Object.assign({}, state, {
+				currentGroceryList: []
 			})
 
 		default:

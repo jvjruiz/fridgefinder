@@ -4,21 +4,42 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	TouchableHighlight,
+	TouchableWithoutFeedback,
 	Image
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 export default class GroceryItem extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			checked:false
+		}
+	}
+
+	toggleChecked() {
+		console.log('hello')
+		this.setState({checked:!this.state.checked})
+	}
+
 	render() {
 		return(
-			<TouchableHighlight onPress={this.props.onPress}>
-				<View style={styles.container}>
-					<View style={styles.textBox}>	
-						<Text style={styles.header}>{this.props.item.name[0].toUpperCase()}{this.props.item.name.slice(1,this.props.item.name.length)}</Text>
-						<Text style={styles.details}>Quantity: {this.props.item.amount} {this.props.item.unit} Aisle: {this.props.item.aisle}</Text>
+			<View style={styles.container}>
+				<TouchableWithoutFeedback onPress={this.toggleChecked.bind(this)}>	
+					<View style={styles.checkbox}>
+						{this.state.checked ?
+                         <Icon name="angle-left" size={16} color='#000000' />
+                         :
+                         null
+                    }
 					</View>
+				</TouchableWithoutFeedback>
+				<View style={styles.textBox}>	
+					<Text style={styles.header}>{this.props.item.name[0].toUpperCase()}{this.props.item.name.slice(1,this.props.item.name.length)}</Text>
+					<Text style={styles.details}>Quantity: {this.props.item.amount} {this.props.item.unit} Aisle: {this.props.item.aisle}</Text>
 				</View>
-			</TouchableHighlight>
+			</View>
 		)
 	}
 }
@@ -52,5 +73,12 @@ const styles = StyleSheet.create({
 		marginTop:7.5,
 		height:54,
 		width:96
+	},
+	checkbox: {
+		height:15,
+		width:15,
+		borderColor: 'gray',
+		borderWidth:1,
+		marginTop:25,
 	}
 })

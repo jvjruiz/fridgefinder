@@ -30,6 +30,11 @@ export default function Reducer(state = initialState, action = {}) {
 				currentGroceryList: state.currentGroceryList.concat(action.payload)
 			})
 
+		case actions.DELETE_GROCERY_ITEM:
+			return Object.assign({}, state, {
+				currentGroceryList: [...state.currentGroceryList.slice(0,action.payload), ...state.currentGroceryList.slice(action.payload + 1)]
+			})
+
 		case actions.CLEAR_GROCERY_LIST: 
 			return Object.assign({}, state, {
 				currentGroceryList: []

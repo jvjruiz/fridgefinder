@@ -14,6 +14,15 @@ export function addToGroceryList(array) {
 	}
 }
 
+export const DELETE_GROCERY_ITEM = 'DELETE_GROCERY_ITEM';
+export function deleteGroceryItem(index) {
+	console.log(index)
+	return {
+		type:DELETE_GROCERY_ITEM,
+		payload: index
+	}
+}
+
 export const CLEAR_GROCERY_LIST = 'CLEAR_GROCERY_LIST';
 export function clearGroceryList() {
 	return {

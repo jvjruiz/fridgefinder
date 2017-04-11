@@ -8,6 +8,7 @@ import {
   View
 } from 'react-native';
 import resultsPage from './resultsPage';
+import SearchInput from './SearchInput';
 import {connect} from 'react-redux';
 import * as actions from '../redux/actions';
 
@@ -28,11 +29,12 @@ class searchPage extends Component {
           <Text style={styles.instructions}>
             Search with your current ingredients
           </Text>
-          <TextInput
+          <SearchInput
             style={styles.input}
             placeholder="Separate with commas e.g. salt, pepper, steak"
             onChangeText = {(text) => this.props.dispatch(actions.updateSearchString(text))}
             onSubmitEditing = {() => this.onSubmit()}
+            autoFocus = {true}
           />
           <Button
             onPress={() => this.onSubmit()}
